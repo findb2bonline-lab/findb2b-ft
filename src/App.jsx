@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 const API = "https://lead-engine-production-0516.up.railway.app";
 
@@ -95,23 +96,26 @@ export default function App() {
   // -------------------------
   if (!loggedIn) {
     return (
-      <div style={{ padding: 40, maxWidth: 400 }}>
-        <h2>FindB2B Access</h2>
+      <>
+        <div style={{ padding: 40, maxWidth: 400 }}>
+          <h2>FindB2B Access</h2>
 
-        <input
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={{ padding: 10, width: "100%", marginTop: 10 }}
-        />
+          <input
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            style={{ padding: 10, width: "100%", marginTop: 10 }}
+          />
 
-        <button
-          onClick={handleLogin}
-          style={{ marginTop: 15, padding: 10, width: "100%" }}
-        >
-          Continue
-        </button>
-      </div>
+          <button
+            onClick={handleLogin}
+            style={{ marginTop: 15, padding: 10, width: "100%" }}
+          >
+            Continue
+          </button>
+        </div>
+        <Analytics />
+      </>
     );
   }
 
@@ -119,8 +123,9 @@ export default function App() {
   // MAIN APP
   // -------------------------
   return (
-    <div style={{ padding: 40 }}>
-      <h2>FindB2B Lead Search</h2>
+    <>
+      <div style={{ padding: 40 }}>
+        <h2>FindB2B Lead Search</h2>
 
       {/* SEARCH BAR */}
       <div style={{ marginBottom: 20 }}>
@@ -196,6 +201,8 @@ export default function App() {
           </tbody>
         </table>
       </div>
-    </div>
+      </div>
+      <Analytics />
+    </>
   );
 }
